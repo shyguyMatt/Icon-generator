@@ -5,6 +5,8 @@ const colorsjs = require('./colors')
 const fs = require('fs');
 var colors = colorsjs.colors
 
+// this function was taken from the inquirer docs, I did not write it.
+// this function searches through a list of colors to be used for picking colors
 function searchcolors(answers, input = '') {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -48,6 +50,8 @@ inquirer
     .then((response) => {
         let svg = ''
         switch (response.shape) {
+
+            // switch case for circle logos
             case 'circle':
                 svg = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 
@@ -57,6 +61,8 @@ inquirer
                   
 </svg>`;
                 break;
+
+            // switch case for triangle logos
             case 'triangle':
                 svg = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 
@@ -66,6 +72,8 @@ inquirer
                   
 </svg>`;
                 break;
+
+            // switch case for square logos
             case 'square':
                 svg = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 
@@ -83,5 +91,6 @@ inquirer
             if (err) {
               console.error(err);
             }})
+        console.log(`Generated ${response.file_name}.svg`)
     })
 
